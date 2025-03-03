@@ -1,0 +1,24 @@
+{
+  "name": "jeshua",
+  "version": "1.0.0",
+  "description": "proyecto sobre dependencias con node",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeshui2021/CrudEstudiantes2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeshui2021/CrudEstudiantes2/issues"
+  },
+  "homepage": "https://github.com/Jeshui2021/CrudEstudiantes2#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
