@@ -1,35 +1,41 @@
+import { Estudiante } from './Estudiantes.js';
+
 export class GestorEstudiantes {
     constructor() {
-      this.estudiantes = [];
+        this.estudiantes = [];
     }
-  
+
     crear(nombre, edad, nivel) {
-      const id = this.estudiantes.length + 1;
-      this.estudiantes.push({ id, nombre, edad, nivel });
+        const estudiante = new Estudiante(nombre, edad, nivel);
+        this.estudiantes.push(estudiante);
     }
-  
+
     listar() {
-      return this.estudiantes;
+        return this.estudiantes;
     }
-  
-    actualizar(id, nombre, edad, nivel) {
-      for (let i = 0; i < this.estudiantes.length; i++) {
-        if (this.estudiantes[i].id === id) {
-          this.estudiantes[i] = { id, nombre, edad, nivel };
-          return true;
+
+    obtenerPorId(id) {
+        return this.estudiantes.find(est => est.id === id);
+    }
+
+    actualizar(id, nombre, edad, nivel, calificaciones = {}) {
+        const estudiante = this.obtenerPorId(id);
+        if (estudiante) {
+            estudiante.nombre = nombre;
+            estudiante.edad = edad;
+            estudiante.nivel = nivel;
+            Object.assign(estudiante.calificaciones, calificaciones);
+            return true;
         }
-      }
-      return false;
+        return false;
     }
-  
+
     eliminar(id) {
-      for (let i = 0; i < this.estudiantes.length; i++) {
-        if (this.estudiantes[i].id === id) {
-          this.estudiantes.splice(i, 1);
-          return true;
+        const index = this.estudiantes.findIndex(est => est.id === id);
+        if (index !== -1) {
+            this.estudiantes.splice(index, 1);
+            return true;
         }
-      }
-      return false;
+        return false;
     }
-  }
-  
+}
