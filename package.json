@@ -20,5 +20,7 @@
   "homepage": "https://github.com/Jeshui2021/CrudEstudiantes2#readme",
   "dependencies": {
     "express": "^4.21.2"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }
