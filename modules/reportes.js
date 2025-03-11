@@ -1,18 +1,18 @@
-// Reporte 1: Listado de Estudiantes (nombre y área)
+
 export function listadoEstudiantes(estudiantes) {
     return estudiantes.map(function(est) {
       return { nombre: est.nombre, "área": est.nivel };
     });
   }
   
-  // Reporte 2: Búsqueda de Estudiante por Nombre o ID
+  
   export function buscarEstudiante(estudiantes, criterio) {
     return estudiantes.find(function(est) {
       return est.id === criterio || est.nombre.toLowerCase() === String(criterio).toLowerCase();
     });
   }
   
-  // Reporte 3: Promedio de Calificaciones por Estudiante
+
   export function promedioPorEstudiante(estudiantes) {
     return estudiantes.map(function(est) {
       var calif = Object.values(est.calificaciones);
@@ -24,14 +24,14 @@ export function listadoEstudiantes(estudiantes) {
     });
   }
   
-  // Reporte 4: Estudiantes con Promedio Mayor a un Umbral
+  
   export function estudiantesConPromedioMayor(estudiantes, umbral) {
     return promedioPorEstudiante(estudiantes).filter(function(est) {
       return est.promedio > umbral;
     });
   }
   
-  // Reporte 5: Estudiantes Aprobados y Reprobados por Materia
+
   export function aprobadosReprobadosPorMateria(estudiantes, materia) {
     var aprobados = estudiantes.filter(function(est) {
       return est.calificaciones[materia] !== undefined && est.calificaciones[materia] >= 60;
@@ -46,7 +46,7 @@ export function listadoEstudiantes(estudiantes) {
     return { aprobados: aprobados, reprobados: reprobados };
   }
   
-  // Reporte 6: Promedio General del Grupo (opcional por nivel)
+
   export function promedioGeneralGrupo(estudiantes, nivel) {
     var filtrados = nivel ? estudiantes.filter(function(est) { return est.nivel === nivel; }) : estudiantes;
     var promedios = promedioPorEstudiante(filtrados);
@@ -57,7 +57,7 @@ export function listadoEstudiantes(estudiantes) {
     return { promedioGeneral: parseFloat(promedioGeneral.toFixed(2)) };
   }
   
-  // Reporte 7: Promedio General por Área de Estudio
+
   export function formatearPromedioPorArea(estudiantes) {
     var agrupados = estudiantes.reduce(function(acc, est) {
       var calif = Object.values(est.calificaciones);
@@ -77,7 +77,7 @@ export function listadoEstudiantes(estudiantes) {
     }, {});
   }
   
-  // Reporte 8: Distribución de Estudiantes por Área
+
   export function distribucionPorArea(estudiantes) {
     return estudiantes.reduce(function(acc, est) {
       if (acc[est.nivel] === undefined) {
@@ -89,7 +89,7 @@ export function listadoEstudiantes(estudiantes) {
     }, {});
   }
   
-  // Reporte 9: Promedio de Cada Materia por Área de Estudio
+  
   export function formatearPromedioMateriaPorArea(estudiantes) {
     var agrupados = estudiantes.reduce(function(acc, est) {
       var area = est.nivel;
@@ -116,7 +116,7 @@ export function listadoEstudiantes(estudiantes) {
     }, {});
   }
   
-  // Reporte 10: Mejores y Peores Estudiantes por Área (opcional por nivel)
+
   export function mejoresPeoresPorArea(estudiantes, nivel) {
     var filtrados = nivel ? estudiantes.filter(function(est) { return est.nivel === nivel; }) : estudiantes;
     var promedios = promedioPorEstudiante(filtrados);
@@ -129,7 +129,7 @@ export function listadoEstudiantes(estudiantes) {
     return { mejores: ordenadosDesc.slice(0, 2), peores: ordenadosAsc.slice(0, 2) };
   }
   
-  // Reporte 11: Ranking de Estudiantes por Promedio
+ 
   export function rankingEstudiantes(estudiantes) {
     var promedios = promedioPorEstudiante(estudiantes);
     return promedios.slice().sort(function(a, b) {
@@ -137,7 +137,7 @@ export function listadoEstudiantes(estudiantes) {
     });
   }
   
-  // Reporte 12: Cantidad de Aprobados y Reprobados en la Clase
+  
   export function cantidadAprobadosReprobados(estudiantes) {
     var promedios = promedioPorEstudiante(estudiantes);
     return promedios.reduce(function(acc, est) {
@@ -150,7 +150,7 @@ export function listadoEstudiantes(estudiantes) {
     }, { aprobados: 0, reprobados: 0 });
   }
   
-  // Reporte 13: Reporte de Rendimiento Académico
+
   export function reporteRendimiento(estudiantes) {
     var totalEstudiantes = estudiantes.length;
     var promedioGeneral = promedioGeneralGrupo(estudiantes).promedioGeneral;
